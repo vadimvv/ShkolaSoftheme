@@ -10,7 +10,10 @@ namespace HelloWorld
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.ForegroundColor = System.ConsoleColor.Yellow;
+            Console.WriteLine("Hello World! My name is Vadym");
+            Console.ReadLine();
+            
         }
     }
 }
