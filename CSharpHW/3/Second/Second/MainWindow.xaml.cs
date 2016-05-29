@@ -29,13 +29,17 @@ namespace Second
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             CheckAge_And_ZodiacSign myClass = new CheckAge_And_ZodiacSign();
-
+            
             textBox.Text = myClass.UserInfo(DatePicker1.SelectedDate.Value);
-            //BitmapImage b = new BitmapImage();
-            //b.BeginInit();
-            //b.UriSource = new Uri();
-            //b.EndInit();
-            //image.Source = b;
+
+            string[] data = textBox.Text.Split(' ');
+            string fileName = data[1]; //find Image name
+
+            BitmapImage b = new BitmapImage();
+            b.BeginInit();
+            b.UriSource = new Uri(AppDomain.CurrentDomain.BaseDirectory + @"\Signs\"+fileName+".ico", UriKind.Absolute);
+            b.EndInit();
+            image.Source = b;
         }
     }
 }

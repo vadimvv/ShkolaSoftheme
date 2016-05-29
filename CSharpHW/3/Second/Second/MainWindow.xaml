@@ -8,7 +8,7 @@
         Title="MainWindow" Height="202" Width="473">
     <Grid>
         <DatePicker x:Name="DatePicker1" HorizontalAlignment="Left" Margin="59,53,0,0" VerticalAlignment="Top" Height="26" Width="114" SelectedDateChanged="DatePicker_SelectedDateChanged"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="59,105,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.645,-1.451"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="59,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="114" RenderTransformOrigin="0.645,-1.451"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="86" Margin="250,42,0,0" VerticalAlignment="Top" Width="100"/>
         <Image x:Name="image1" HorizontalAlignment="Left" Height="100" Margin="250,42,0,0" VerticalAlignment="Top" Width="100"/>
 
