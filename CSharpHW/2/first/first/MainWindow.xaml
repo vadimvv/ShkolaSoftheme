@@ -1,0 +1,31 @@
+﻿<Window x:Class="first.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:first"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="390.25" Width="484">
+    <Grid Margin="0,0,2,-2">
+        <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="235" Margin="33,62,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="ListBoxChangeItem">
+            <ListBoxItem Selected="ListBoxChangeItem">sbyte</ListBoxItem>
+            <ListBoxItem>short</ListBoxItem>
+            <ListBoxItem>int</ListBoxItem>
+            <ListBoxItem>long</ListBoxItem>
+            <ListBoxItem>byte</ListBoxItem>
+            <ListBoxItem>ushort</ListBoxItem>
+            <ListBoxItem>uint</ListBoxItem>
+            <ListBoxItem>ulong</ListBoxItem>
+            <ListBoxItem>float</ListBoxItem>
+            <ListBoxItem>double</ListBoxItem>
+            <ListBoxItem>decimal</ListBoxItem>
+        </ListBox>
+        <TextBox x:Name="min" HorizontalAlignment="Left" Height="23" Margin="227,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
+        <TextBox x:Name="max" HorizontalAlignment="Left" Height="23" Margin="227,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
+        <TextBox x:Name="Def" HorizontalAlignment="Left" Height="23" Margin="227,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203"/>
+        <Label x:Name="MAX" Content="Max" HorizontalAlignment="Left" Margin="157,66,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Min" Content="Min" HorizontalAlignment="Left" Margin="157,92,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Def1" Content="Default" HorizontalAlignment="Left" Margin="157,123,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
