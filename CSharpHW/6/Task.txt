@@ -1,0 +1,5 @@
+Create a WPF application. Application should pick a number.
+The number is generated randomly from 1 to 10.
+User enters a number and if he guesses the number, then program returns success.
+Otherwise the program prints the number that was picked and then generates a new number.
+Please use exception handling for cases when user enters not valid data.
