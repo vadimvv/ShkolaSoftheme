@@ -1,0 +1,15 @@
+1. Download and install MS Visual Studio.
+2. Create your personal Git account.
+3. Download and install Tortoise Git or similar.
+4. Create public repository named ShkolaSoftheme.
+5. Create folder CSharpHW inside of your repository.
+6. Create folder with a lection number inside of CSharpHW folder and put there your HW solution. 
+7. Create Hello World console application and print your name there. Colour of your text should be yellow.
+
+
+
+
+
+Contact info:
+Email -> nick.lukianenko@softheme.com
+Skype -> nick_lukianenko
