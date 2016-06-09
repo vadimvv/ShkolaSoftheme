@@ -7,7 +7,7 @@ namespace Lottery
     {
         public int[] numbs;
         public int Length { get; set; }
-
+         
         public Numbers(int size)
         {
             numbs = new int[size];
