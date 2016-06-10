@@ -69,7 +69,6 @@ namespace MyLibrary
 
         }
 
-
         static MyLibrary DefaultBooks()
         {
             MyLibrary homeLibrary = new MyLibrary();

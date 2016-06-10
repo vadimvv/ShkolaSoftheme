@@ -20,5 +20,14 @@ namespace MyLibrary
         {
             books.Add(book);
         }
+
+        public void Info()
+        {
+            int countGenres = books.Where(b=>b.Genre;
+            foreach (var b in books)
+            {
+                
+            }
+        }
     }
 }
