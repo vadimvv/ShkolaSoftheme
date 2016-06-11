@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 
 namespace MyLibrary
 {
+
+
     class MyLibrary
     {
         List<Book> books;
 
-
         public MyLibrary()
         {
+
             books = new List<Book>();
             this.Add(new Book("Сто лет одиночества", "Маркес Габриэль", "Современная проза", 1940, 92, 5), 5);
             this.Add(new Book("Приключения капитана врунгеля", "Некрасов Александр", "Детские приключения", 1979, 32, 4), 3);
@@ -28,22 +30,44 @@ namespace MyLibrary
 
         }
 
-       
-        public bool FindByTitle(string title)
-        {
-            var book = books.Where(b => b.BookTitle.Contains(title));
-            if (book != null)
-                return true;
-
-            return false;
-        }
-
         public string Info()
         {
             return "Amount of books by genre:\n" + QuantityByGenre() +
                    "\n\nThe latest added book:\n" + LastBookInfo() +
                    "\n\nThe oldest book:\n" + FirstBookInfo() +
                    "\n\nThe most popular book:\n" + MostPopularBook();
+        }
+        public string FindByTitle(string title)
+        {
+            string result = "";
+            var findBooks = books.Where(b => b.BookTitle.Contains(title)).Distinct();      //FirstOrDefault(b => b.BookTitle == title);
+            foreach (var b in findBooks)
+            {
+                result += b.BookInfo() + "\n\n";
+            }
+            return result;
+        }
+
+        public string FindByAuthor(string author)
+        {
+            string result = "";
+            var findBooks = books.Where(b => b.Author.Contains(author)).Distinct();//   FirstOrDefault(b => b.Author == author);
+            foreach (var b in findBooks)
+            {
+                result += b.BookInfo() + "\n\n";
+            }
+            return result;
+        }
+
+        public string FindByAuthorAndTitle(string author, string title)
+        {
+            string result = "";
+            var findBooks = books.Where(b => (b.Author + b.BookTitle).Contains(author + title)).Distinct(); // FirstOrDefault(b => b.Author + b.BookTitle == author + title);
+            foreach (var b in findBooks)
+            {
+                result += b.BookInfo() + "\n\n";
+            }
+            return result;
         }
 
         public string QuantityByGenre()
@@ -65,14 +89,10 @@ namespace MyLibrary
         {
             return books.LastOrDefault().BookInfo();
         }
-
-
-
         public string MostPopularBook()
         {
             return books.OrderBy(b => b.Popularity).LastOrDefault().BookInfo();
         }
-
         public string MostPopularBook(string genre)
         {
             return books.Where(b => b.Genre == genre).OrderBy(b => b.Popularity).LastOrDefault().BookInfo();
@@ -100,8 +120,19 @@ namespace MyLibrary
 
 
 
+        public string GetLastOwners()
+        {
+            string resutl = "";
+            int counter = 1;
+            foreach (var b in books)
+            {
 
-
+                resutl += counter + ". " + b.Owner + "\n";
+                counter++;
+            }
+            return resutl;
+        }
+        /*----------------------------------*/
         public List<string> GetGenresList()
         {
             List<string> result = new List<string>();
@@ -129,7 +160,7 @@ namespace MyLibrary
             //}
             //return result;
         }
-        public string AllBooks()
+        public string AllTitles()
         {
             string result = "";
             int counter = 1;
@@ -154,19 +185,22 @@ namespace MyLibrary
         }
         public void Add(Book book, int amount)
         {
+            if (amount == 1)
+                books.Add((Book)book.Clone());
             for (int i = 0; i < amount; i++)
             {
                 books.Add(book);
             }
+
 
         }
         public void Remove(Book book)
         {
             books.Remove(book);
         }
-        public int Amount()
-        {
-            return books.Count;
-        }
+        //public int Amount()
+        //{
+        //    return books.Count;
+        //}
     }
 }

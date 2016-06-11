@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyLibrary
 {
-    class Book
+    class Book:ICloneable
     {
         public string BookTitle { get; set; }
         public string Author { get; set; }
@@ -15,6 +15,8 @@ namespace MyLibrary
         public int Year { get; set; }
         public int Pages { get; set; }
         public int Popularity { get; set; }
+
+        public string Owner { get; set; }
 
         public Book(string title,string author, string genre, int year, int pages, int popularity)
         {
@@ -37,6 +39,11 @@ namespace MyLibrary
                       "\nYear: " + Year +
                       "\nPopularity: " + Popularity;
             return result;
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
         }
     }
 }

@@ -9,6 +9,13 @@ namespace MyLibrary
 {
     class User
     {
+        public delegate void LibHandler(Book book, User user);
+        public event LibHandler AddingBooks = null;
+        private void OnAddingBooks(Book book, User user)
+        {
+            book.Owner = user.UserName;
+        }
+
         public string UserName { get; set; }
         public string Password { get; set; }
         private List<Book> userBooks;
@@ -18,7 +25,10 @@ namespace MyLibrary
             UserName = userName;
             Password = password;
             userBooks = new List<Book>();
+            AddingBooks += OnAddingBooks;
         }
+
+       
 
         public void TakeBook(Book book)
         {
@@ -28,6 +38,7 @@ namespace MyLibrary
         public void ReturnTheBook(Book book)
         {
             userBooks.Remove(book);
+            AddingBooks.Invoke(book, this);
         }
 
         public void AddBookToLibrary(Book book, MyLibrary library)
@@ -59,7 +70,5 @@ namespace MyLibrary
         {
             return userBooks.Distinct().ToList();
         }
-
-        
     }
 }

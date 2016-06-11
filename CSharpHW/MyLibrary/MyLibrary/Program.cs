@@ -14,9 +14,7 @@ namespace MyLibrary
             User user;
             DBUsers users = new DBUsers();
             MyLibrary homeLibrary = new MyLibrary();
-
             bool isAuth = Auth(users, out user);
-
 
             string userAnswer = "";
             do
@@ -25,13 +23,56 @@ namespace MyLibrary
                 userAnswer = Console.ReadLine();
 
                 #region LibraryInfo (1)
+
                 if (userAnswer == "1")
+                {
+                    Console.Clear();
                     Console.WriteLine(homeLibrary.Info());
+                    PressEnter();
+                }
+                #endregion
+
+                #region Find book (2)
+                else if (userAnswer == "2")
+                {
+                    Console.Clear();
+                    Console.WriteLine("1. Find by title\n" +
+                                      "2. Find by author\n" +
+                                      "3. Find by author and title");
+                    string result = Console.ReadLine();
+                    string author, title;
+                    switch (result)
+                    {
+                        case "1":
+                            Console.Write("Enter the title: ");
+                            title = Console.ReadLine();
+                            Console.WriteLine("\n" + homeLibrary.FindByTitle(title));
+                            break;
+                        case "2":
+                            Console.Write("Enter the author:");
+                            author = Console.ReadLine();
+                            Console.WriteLine("\n" + homeLibrary.FindByAuthor(author));
+                            break;
+                        case "3":
+                            Console.Write("Enter the author:");
+                            author = Console.ReadLine();
+                            Console.Write("Enter the title: ");
+                            title = Console.ReadLine();
+                            Console.WriteLine("\n" + homeLibrary.FindByAuthorAndTitle(author, title));
+                            break;
+                        default:
+                            Console.WriteLine("Wrong number!");
+                            break;
+                    }
+                    PressEnter();
+                }
                 #endregion
 
                 #region Most popular book by genre (3)
+
                 else if (userAnswer == "3")
                 {
+                    Console.Clear();
                     if (homeLibrary.BookList().Count == 0)
                         Console.WriteLine("We haven't any book");
                     else
@@ -47,18 +88,20 @@ namespace MyLibrary
                         else
                             Console.WriteLine("Wrong number");
                     }
+                    PressEnter();
                 }
                 #endregion
 
                 #region TakeBook(4)
+
                 else if (userAnswer == "4" && isAuth)
                 {
-
+                    Console.Clear();
                     if (homeLibrary.BookList().Count == 0)
                         Console.WriteLine("We haven't any book");
                     else
                     {
-                        Console.WriteLine(homeLibrary.AllBooks());
+                        Console.WriteLine(homeLibrary.AllTitles());
 
 
 
@@ -75,12 +118,15 @@ namespace MyLibrary
                         else
                             Console.WriteLine("Wrong number!");
                     }
+                    PressEnter();
                 }
                 #endregion
 
                 #region ReturnTheBook (5)
+
                 else if (userAnswer == "5" && isAuth)
                 {
+                    Console.Clear();
                     if (user.BookList().Count == 0)
                         Console.WriteLine("You haven't any book");
                     else
@@ -98,16 +144,21 @@ namespace MyLibrary
                         else
                             Console.WriteLine("Wrong number");
                     }
+                    PressEnter();
 
                 }
                 #endregion
 
                 #region Add a book (6)
+
                 else if (userAnswer == "6" && isAuth)
                 {
+                    Console.Clear();
                     string title, author, genre;
                     int year, pages;
+
                     #region Enter the details of a book
+
                     Console.WriteLine("Еnter the details of a book");
                     Console.Write("Title: ");
                     title = Console.ReadLine();
@@ -119,26 +170,44 @@ namespace MyLibrary
                     int.TryParse(Console.ReadLine(), out year);
                     Console.Write("Pages: ");
                     int.TryParse(Console.ReadLine(), out pages);
-                    #endregion
-                    Book book = new Book(title,author,genre,year,pages,0);
-                    user.AddBookToLibrary(book,homeLibrary);
 
+                    #endregion
+
+                    Book book = new Book(title, author, genre, year, pages, 0);
+                    user.AddBookToLibrary(book, homeLibrary);
+
+                    PressEnter();
 
                 }
 
                 #endregion
 
-                #region Exit (7)
-                else if (userAnswer == "7")
+                #region Find last owner (7)
+                else if (userAnswer == "7" && isAuth)
+                {
+                    Console.Clear();
+                    Console.WriteLine(homeLibrary.GetLastOwners());
+                    Console.ReadLine();
+                }
+                #endregion
+
+                #region Exit (q)
+
+                else if (userAnswer == "q")
                     break;
+
                 #endregion
             }
 
             while (userAnswer != "exit");
         }
 
+
+        /*-------------------------------------------Methods------------------------------------*/
+
         static void Menu(bool auth)
         {
+            Console.Clear();
             if (auth)
             {
                 Console.WriteLine("                 Menu: ");
@@ -148,7 +217,8 @@ namespace MyLibrary
                 Console.WriteLine("4. Take a book");
                 Console.WriteLine("5. Вернуть книгу");
                 Console.WriteLine("6. Add a book");
-                Console.WriteLine("7. Exit");
+                Console.WriteLine();
+                Console.WriteLine("q. Exit");
             }
             else
             {
@@ -157,10 +227,9 @@ namespace MyLibrary
                 Console.WriteLine("2. Find book");
                 Console.WriteLine("3. The most popular book by genre");
                 Console.WriteLine();
-                Console.WriteLine("7. Exit");
+                Console.WriteLine("q. Exit");
             }
         }
-
 
         static bool Auth(DBUsers users, out User user)
         {
@@ -198,6 +267,11 @@ namespace MyLibrary
 
         }
 
-
+        static void PressEnter()
+        {
+            Console.WriteLine();
+            Console.WriteLine("Please, press Enter");
+            Console.ReadLine();
+        }
     }
 }
