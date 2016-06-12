@@ -1,26 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 
 namespace MyLibrary
 {
-    class Book:ICloneable
+    [OnlyForViewing]
+    class Book : ICloneable
     {
+        [Required]
         public string BookTitle { get; set; }
+        [Required]
         public string Author { get; set; }
+        [Required]
         public string Genre { get; set; }
+        [Required]
         public int Year { get; set; }
+        [Required]
         public int Pages { get; set; }
         public int Popularity { get; set; }
 
         public string Owner { get; set; }
 
-        public Book(string title,string author, string genre, int year, int pages, int popularity)
+        public Book(string bookTitle, string author, string genre, int year, int pages, int popularity)
         {
-            BookTitle = title;
+            BookTitle = bookTitle;
             Author = author;
             Genre = genre;
             Year = year;

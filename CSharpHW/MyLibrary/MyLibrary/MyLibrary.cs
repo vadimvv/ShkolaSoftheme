@@ -190,11 +190,13 @@ namespace MyLibrary
         {
             if (amount == 1)
                 books.Add((Book)book.Clone());
-            for (int i = 0; i < amount; i++)
+            else
             {
-                books.Add(book);
+                for (int i = 0; i < amount; i++)
+                {
+                    books.Add(book);
+                }
             }
-
 
         }
         public void Remove(Book book)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -15,8 +16,9 @@ namespace MyLibrary
         {
             book.Owner = user.UserName;
         }
-
+        [Required]
         public string UserName { get; set; }
+        [Required]
         public string Password { get; set; }
         private List<Book> userBooks;
 
@@ -27,9 +29,6 @@ namespace MyLibrary
             userBooks = new List<Book>();
             AddingBooks += OnAddingBooks;
         }
-
-       
-
         public void TakeBook(Book book)
         {
             userBooks.Add(book);

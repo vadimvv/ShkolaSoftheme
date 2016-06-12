@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace MyLibrary
 {
@@ -15,6 +16,7 @@ namespace MyLibrary
             DBUsers users = new DBUsers();
             MyLibrary homeLibrary = new MyLibrary();
             bool isAuth = Auth(users, out user);
+
 
             string userAnswer = "";
             do
@@ -103,17 +105,29 @@ namespace MyLibrary
                     {
                         Console.WriteLine(homeLibrary.AllTitles());
 
-
-
                         int result;
                         int.TryParse(Console.ReadLine(), out result);
 
                         if (result != 0 && homeLibrary.BookList().Count > result - 1)
                         {
-                            var book = homeLibrary.BookList()[result - 1];
+                            var book = homeLibrary.BookList()[result-1];
                             book.Popularity++;
-                            user.TakeBook(book);
-                            homeLibrary.Remove(book);
+
+                            var results = new List<ValidationResult>();
+                            var context = new ValidationContext(book);
+
+                            if (!Validator.TryValidateObject(book, context, results, true))
+                            {
+                                foreach (var error in results)
+                                {
+                                    Console.WriteLine(error.ErrorMessage);
+                                }
+                            }
+                            else
+                            {
+                                user.TakeBook(book);
+                                homeLibrary.Remove(book);
+                            }
                         }
                         else
                             Console.WriteLine("Wrong number!");
@@ -154,30 +168,49 @@ namespace MyLibrary
                 else if (userAnswer == "6" && isAuth)
                 {
                     Console.Clear();
+
                     string title, author, genre;
                     int year, pages;
 
                     #region Enter the details of a book
 
-                    Console.WriteLine("Еnter the details of a book");
-                    Console.Write("Title: ");
-                    title = Console.ReadLine();
-                    Console.Write("Author: ");
-                    author = Console.ReadLine();
-                    Console.Write("Genre: ");
-                    genre = Console.ReadLine();
-                    Console.Write("Year: ");
-                    int.TryParse(Console.ReadLine(), out year);
-                    Console.Write("Pages: ");
-                    int.TryParse(Console.ReadLine(), out pages);
+                    while (true)
+                    {
+                        Console.WriteLine("Еnter the details of a book");
+                        Console.Write("Title: ");
+                        title = Console.ReadLine();
+                        Console.Write("Author: ");
+                        author = Console.ReadLine();
+                        Console.Write("Genre: ");
+                        genre = Console.ReadLine();
+                        Console.Write("Year: ");
+                        int.TryParse(Console.ReadLine(), out year);
+                        Console.Write("Pages: ");
+                        int.TryParse(Console.ReadLine(), out pages);
 
+                        Book book = new Book(title, author, genre, year, pages, 0);
+
+                        #region CheckAttributes
+                        var results = new List<ValidationResult>();
+                        var context = new ValidationContext(book);
+
+                        if (!Validator.TryValidateObject(book, context, results, true))
+                        {
+                            foreach (var error in results)
+                            {
+                                Console.WriteLine(error.ErrorMessage);
+                            }
+                        }
+                        else
+                        {
+                            user.AddBookToLibrary(book, homeLibrary);
+                            break;
+                        }
+                        #endregion
+
+                        PressEnter();
+                    }
                     #endregion
-
-                    Book book = new Book(title, author, genre, year, pages, 0);
-                    user.AddBookToLibrary(book, homeLibrary);
-
-                    PressEnter();
-
                 }
 
                 #endregion
@@ -244,24 +277,48 @@ namespace MyLibrary
             else
             {
                 string userName, password;
-                Console.Clear();
-                Console.WriteLine("Authorization");
-                Console.WriteLine("Enter your login:");
-                userName = Console.ReadLine().ToLower();
 
-                Console.WriteLine("Enter your password:");
-                password = Console.ReadLine();
-
-                if (users.isExsist(new User(userName, password)))
+                while (true)
                 {
                     Console.Clear();
-                    Console.WriteLine("Hello, " + userName);
-                    user = users.GetUser(userName, password);
-                    return true;
+                    Console.WriteLine("Authorization");
+                    Console.WriteLine("Enter your login:");
+                    userName = Console.ReadLine().ToLower();
+
+                    Console.WriteLine("Enter your password:");
+                    password = Console.ReadLine();
+                    User isAuthUser = new User(userName, password);
+
+                    var results = new List<ValidationResult>();
+                    var context = new ValidationContext(isAuthUser);
+
+                    if (!Validator.TryValidateObject(isAuthUser, context, results, true))
+                    {
+                        foreach (var error in results)
+                        {
+                            Console.WriteLine(error.ErrorMessage);
+                        }
+                    }
+                    else
+                    {
+                        if (users.isExsist(isAuthUser))
+                        {
+                            break;
+                        }
+                        Console.WriteLine("Wrong data");
+                    }
+
+
+                    PressEnter();
                 }
-                Console.WriteLine("Wrong! Your status is 'unauthorized'");
-                user = new User("Unregistered", "12345");
-                return false;
+
+
+                Console.Clear();
+                Console.WriteLine("Hello, " + userName);
+                user = users.GetUser(userName, password);
+                return true;
+
+
             }
 
 
