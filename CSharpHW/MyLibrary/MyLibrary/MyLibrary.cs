@@ -39,34 +39,37 @@ namespace MyLibrary
         }
         public string FindByTitle(string title)
         {
-            string result = "";
+            string result = "Not Found";
             var findBooks = books.Where(b => b.BookTitle.Contains(title)).Distinct();      //FirstOrDefault(b => b.BookTitle == title);
-            foreach (var b in findBooks)
-            {
-                result += b.BookInfo() + "\n\n";
-            }
+            if (!findBooks.Any())
+                foreach (var b in findBooks)
+                {
+                    result += b.BookInfo() + "\n\n";
+                }
             return result;
         }
 
         public string FindByAuthor(string author)
         {
-            string result = "";
+            string result = "Not Found";
             var findBooks = books.Where(b => b.Author.Contains(author)).Distinct();//   FirstOrDefault(b => b.Author == author);
-            foreach (var b in findBooks)
-            {
-                result += b.BookInfo() + "\n\n";
-            }
+            if (!findBooks.Any())
+                foreach (var b in findBooks)
+                {
+                    result += b.BookInfo() + "\n\n";
+                }
             return result;
         }
 
         public string FindByAuthorAndTitle(string author, string title)
         {
-            string result = "";
+            string result = "Not Found";
             var findBooks = books.Where(b => (b.Author + b.BookTitle).Contains(author + title)).Distinct(); // FirstOrDefault(b => b.Author + b.BookTitle == author + title);
-            foreach (var b in findBooks)
-            {
-                result += b.BookInfo() + "\n\n";
-            }
+            if (!findBooks.Any())
+                foreach (var b in findBooks)
+                {
+                    result += b.BookInfo() + "\n\n";
+                }
             return result;
         }
 
