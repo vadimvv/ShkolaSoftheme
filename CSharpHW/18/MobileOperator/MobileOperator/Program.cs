@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MobileOperator
 {
@@ -11,17 +8,19 @@ namespace MobileOperator
         static void Main(string[] args)
         {
             MobileOperator Djuice = new MobileOperator();
-            MobileAccount Vadym = new MobileAccount("Vadym", "+380968590222");
-            MobileAccount Roger = new MobileAccount("Roger", "+380968589111");
-            MobileAccount George = new MobileAccount("George", "+380966120653");
-
+            MobileAccount Vadym = new MobileAccount("+380968590222","Vadym");
+            MobileAccount Roger = new MobileAccount("+380968589111","Roger");
+            MobileAccount George = new MobileAccount("+380966120653", "George");
 
             Djuice.Add(Vadym);
             Djuice.Add(Roger);
             Djuice.Add(George);
 
+            Vadym.AddContact("+380968589111", "Roger - Developer");
+            Vadym.AddContact("+380966120653", "Brother");
 
-            Vadym.MakeCall(Roger);
+
+            Roger.MakeCall(Vadym);
             George.SendSMS(Vadym,"Hello");
 
             Console.ReadLine();
