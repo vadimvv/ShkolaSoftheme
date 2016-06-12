@@ -10,14 +10,18 @@ namespace MyStack
     {
         static void Main(string[] args)
         {
-            MyStack<int> R = new MyStack<int>();
-            R.Add(1);
-            R.Add(2);
-            R.Add(3);
-            R.Add(4);
-            R.Add(5);
+            MyStackRealization<int> R = new MyStackRealization<int>();
+            R.Push(1);
+            R.Push(2);
+            R.Push(3);
+            R.Push(4);
+            R.Push(5);
 
-            R.PrintAll();
+            Console.WriteLine(R.Pop());
+            Console.WriteLine(R.Pop());
+            Console.WriteLine(R.Pop());
+            Console.WriteLine(R.Pop());
+            Console.WriteLine(R.Pop());
             Console.ReadLine();
         }
     }

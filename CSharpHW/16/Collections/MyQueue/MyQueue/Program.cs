@@ -7,18 +7,18 @@ namespace MyQueue
     {
         static void Main(string[] args)
         {
-            var MyStack = new MyQueue<int>();
+            var queue = new MyQueue<int>();
 
             for (int i = 0; i < 150; i++)
             {
-                MyStack.Push(i);
+                queue.Push(i);
             }
             for (int i = 0; i < 150; i++)
             {
-                Console.WriteLine(MyStack.Peek());
-                MyStack.Pop();
+                Console.WriteLine(queue.Peek());
+                queue.Pop();
             }
-            
+
             Console.ReadLine();
         }
     }

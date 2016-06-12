@@ -3,7 +3,7 @@
 
 namespace MyQueue
 {
-    class MyQueue<T> 
+    public class MyQueue<T>
     {
         private readonly Stack<T> Head;
         private readonly Stack<T> Tail;
@@ -19,10 +19,10 @@ namespace MyQueue
             ToQueue();
         }
 
-        public void ToQueue()
+        private void ToQueue()
         {
             if (Head.Count != 0) return;
-            while (Tail.Count>0)
+            while (Tail.Count > 0)
             {
                 Head.Push(Tail.Pop());
             }
@@ -36,7 +36,7 @@ namespace MyQueue
 
         public T Peek()
         {
-            
+
             return Head.Peek();
         }
     }
