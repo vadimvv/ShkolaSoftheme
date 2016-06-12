@@ -51,14 +51,17 @@ namespace LinkedList
     {
         static void Main(string[] args)
         {
-            MyLinkedList l = new MyLinkedList();
+            MyLinkedList<int> l = new MyLinkedList<int>();
 
             l.Push_Back(5);
-            l.Push_Back(4);
-            l.Push_Back(3);
-            l.Push_Back(2);
+            l.Push_Front(4);
+            l.Push_Back(6);
+            l.Push_Front(3);
+            l.Push_Front(2);
+            l.Push_Back(7);
+            l.Push_Front(1);
 
-            Console.WriteLine(l.Pop_Front().Value);
+            Console.WriteLine("First element: "+l.Pop_Front().Value);
 
             l.Display();
    

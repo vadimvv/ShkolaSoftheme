@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace LinkedList
 {
-    class MyLinkedList
+    class MyLinkedList<T>
     {
-        private Element First;
-        private Element Current;
-        private Element Last;
+        private Element<T> First;
+        private Element<T> Current;
+        private Element<T> Last;
         private uint size;
         public bool isEmpty
         {
@@ -33,7 +33,7 @@ namespace LinkedList
 
 
 
-        public void Insert_Index(object newElement, uint index)
+        public void Insert_Index(T newElement, uint index)
         {
             if (index < 1 || index > size) 
             {
@@ -56,7 +56,7 @@ namespace LinkedList
                     Current = Current.Next;
                     count++;
                 }
-                Element newElem = new Element(newElement);
+                Element<T> newElem = new Element<T>(newElement);
                 Current.Prev.Next = newElem;
                 newElem.Prev = Current.Prev;
                 Current.Prev = newElem;
@@ -92,9 +92,9 @@ namespace LinkedList
         }
 
 
-        private void Push_Front(object newElement)
+        public void Push_Front(T newElement)
         {
-            Element newElem = new Element(newElement);
+            Element<T> newElem = new Element<T>(newElement);
 
             if (First == null)
             {
@@ -108,9 +108,9 @@ namespace LinkedList
             }
             Count++;
         }
-        public void Push_Back(object newElement)
+        public void Push_Back(T newElement)
         {
-            Element newElem = new Element(newElement);
+            Element<T> newElem = new Element<T>(newElement);
 
             if (First == null)
             {
@@ -126,7 +126,7 @@ namespace LinkedList
         }
 
 
-        public Element Pop_Front()
+        public Element<T> Pop_Front()
         {
             if (First == null)
             {
@@ -134,7 +134,7 @@ namespace LinkedList
             }
             else
             {
-                Element temp = First;
+                Element<T> temp = First;
                 if (First.Next != null)
                 {
                     First.Next.Prev = null;
@@ -144,7 +144,7 @@ namespace LinkedList
                 return temp;
             }
         }
-        public Element Pop_Back()
+        public Element<T> Pop_Back()
         {
             if (Last == null)
             {
@@ -152,7 +152,7 @@ namespace LinkedList
             }
             else
             {
-                Element temp = Last;
+                Element<T> temp = Last;
                 if (Last.Prev != null)
                 {
                     Last.Prev.Next = null;
@@ -188,9 +188,9 @@ namespace LinkedList
             }
         }
 
-        
 
-        public Element FindElem(object Data)
+
+        public Element<T> FindElem(T Data)
         {
             Current = First;
             while (Current != null)
@@ -202,3 +202,7 @@ namespace LinkedList
 
     }
 }
+
+
+
+

@@ -1,11 +1,11 @@
 ﻿
 namespace LinkedList
 {
-    public class Element
+    public class Element<T>
     {
         private object _Data;
-        private Element _Next;
-        private Element _Prev;
+        private Element<T> _Next;
+        private Element<T> _Prev;
         public object Value
         {
             get { return _Data; }
@@ -15,12 +15,12 @@ namespace LinkedList
         {
             this._Data = Data;
         }
-        public Element Next
+        public Element<T> Next
         {
             get { return this._Next; }
             set { this._Next = value; }
         }
-        public Element Prev
+        public Element<T> Prev
         {
             get { return this._Prev; }
             set { this._Prev = value; }
