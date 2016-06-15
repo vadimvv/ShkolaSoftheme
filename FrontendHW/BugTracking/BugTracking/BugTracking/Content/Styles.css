@@ -1,0 +1,103 @@
+﻿body {
+    background-color: #F8FEFE;
+    margin: 0px;
+}
+
+.items > div {
+}
+
+    .items > div > div {
+        background-color: lightgoldenrodyellow;
+        border: 1px solid black;
+        padding: 10px 30px;
+        margin: 10px;
+    }
+
+.items > img {
+    width: 200px;
+}
+
+
+
+/* Menu */
+.menu {
+    background-color: #4D868D;
+    border: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #FFF;
+}
+
+.navbar-nav > li > a {
+    line-height: 10px;
+}
+
+.navbar {
+    margin: 0;
+    min-height: 20px;
+    max-height: 40px;
+}
+
+.navbar-brand {
+    height: 40px;
+    padding-top: 5px;
+}
+
+
+.img-circle {
+    height:29px; 
+    margin-right:5px;
+}
+
+.user {
+    
+}
+#searchText {
+    
+}
+.btn {
+    margin-top: 4px;
+    margin-left: 15px;
+    height:30px;
+    border-radius:0;
+    border: 0 none;
+}
+ 
+.btn2 {
+    height:30px;
+    border-radius:0;
+    border: 0 none;
+    background: #4D868D;
+    color: white;
+}
+
+.btn:focus {
+  background: #92C1BA;
+}
+ 
+.btn-primary {
+    background: #92C1BA;
+}
+ 
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #92C1BA;
+}
+.dropdown-toggle {
+    color:white;
+}
+.dropdown-toggle:active, .open .dropdown-toggle {
+    background:#92C1BA;
+    color:white;
+}
+.hel:hover{
+    background-color:red;
+}
+.active a.list-group-item { background-color: #ABCFCA; }
+li.list-group-item {
+    background-color: #ABCFCA;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #92C1BA;
+    box-shadow: none;
+}
