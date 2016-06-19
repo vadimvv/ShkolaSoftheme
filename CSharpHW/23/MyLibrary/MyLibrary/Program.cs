@@ -23,9 +23,6 @@ namespace MyLibrary
 
             XDocument doc = XDocument.Load("books.xml");
 
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load("books.xml");
-
             User user;
             DBUsers users = new DBUsers();
             MyLibrary homeLibrary = new MyLibrary();
@@ -288,10 +285,10 @@ namespace MyLibrary
                             string BookTitle = reader.ReadElementContentAsString();
                             string Author = reader.ReadElementContentAsString();
                             string Genre = reader.ReadElementContentAsString();
-                            int Year,Pages,Popularity;
-                            Int32.TryParse(reader.ReadElementContentAsString(),out Year);
-                            Int32.TryParse(reader.ReadElementContentAsString(),out Pages);
-                            Int32.TryParse(reader.ReadElementContentAsString(),out Popularity);
+                            int Year, Pages, Popularity;
+                            Int32.TryParse(reader.ReadElementContentAsString(), out Year);
+                            Int32.TryParse(reader.ReadElementContentAsString(), out Pages);
+                            Int32.TryParse(reader.ReadElementContentAsString(), out Popularity);
                             if (BookTitle.Contains(result))
                             {
                                 Console.WriteLine(new Book(BookTitle, Author, Genre, Year, Pages, Popularity).BookInfo());
@@ -344,7 +341,33 @@ namespace MyLibrary
                 }
                 #endregion
 
+                else if (userAnswer == "12" && isAuth)
+                {
+                    XmlDocument xmlDoc = new XmlDocument();
+                    xmlDoc.Load("books.xml");
+                    XmlElement xRoot = xmlDoc.DocumentElement;
 
+                    Book book = new Book();
+                    XmlNode xmlElement = xRoot.FirstChild;
+
+                    foreach (XmlNode v in xmlElement)
+                    {
+                        if (v.Name == "BookTitle")
+                            book.BookTitle = v.InnerText;
+                        else if (v.Name == "Author")
+                            book.Author = v.InnerText;
+                        else if (v.Name == "Genre")
+                            book.Genre = v.InnerText;
+                        else if (v.Name == "Year")
+                            book.Year = Convert.ToInt32(v.InnerText);
+                        else if (v.Name == "Pages")
+                            book.Pages = Convert.ToInt32(v.InnerText);
+                        else if (v.Name == "Popularity")
+                            book.Popularity = Convert.ToInt32(v.InnerText);
+                    }
+                    Console.WriteLine(book.BookInfo());
+                    PressEnter();
+                }
 
 
                 #region Save (S)
@@ -440,6 +463,7 @@ namespace MyLibrary
                 Console.WriteLine("9. Search in xml file");
                 Console.WriteLine("10. Select");
                 Console.WriteLine("11. Add to XML file default book");
+                Console.WriteLine("12. Get first book from XML file");
                 Console.WriteLine();
                 Console.WriteLine("s. Save (admin)");
                 Console.WriteLine("l. Load (admin)");
