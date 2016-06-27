@@ -1,0 +1,70 @@
+﻿.marginFromMenu {
+    margin-top: 40px;
+}
+
+.divsWithBorder {
+    border: 1px solid;
+    border-color: rgb(232, 237, 237);
+    margin-top: 40px;
+    background-color: white;
+    box-shadow: 2px 2px rgb(239,244,244);
+    padding: 10px 0;
+}
+
+.img-circle {
+    border: solid 1px;
+    border-color: rgb(174, 174, 174);
+    width: 55px;
+    height: 55px;
+}
+
+.img-priority {
+    width: 36px;
+    height: 36px;
+}
+
+.padding0 {
+    padding: 0;
+}
+
+.marginBottom10 {
+    margin-bottom: 10px;
+}
+
+.paddingRightAndTop10 {
+    padding: 10px 0 0 10px;
+}
+
+.margin0 {
+    margin: 0;
+}
+
+.btn-circle {
+    width: 35px;
+    height: 35px;
+    border: solid 1px;
+    border-color: rgb(77, 134, 141);
+    text-align: center;
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+.glyphicon {
+    color: rgb(77, 134, 141);
+}
+
+.h6grey {
+    color: rgb(174,174,174);
+}
+
+
+/* Element repeated*/
+.Element:hover {
+    cursor: pointer;
+    background: #F2FBFA;
+}
+
+
+
+   
+

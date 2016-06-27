@@ -1,0 +1,108 @@
+﻿#headerTitle {
+    font-size: 28px;
+    margin-top: 45px;
+}
+
+#SortBy {
+    float: left;
+}
+
+.dropdown-toggle {
+    margin-left: -20px;
+}
+
+.V_element {
+    background: white;
+    border: 2px solid rgba(235, 239, 239, .8);
+    box-shadow: -2px 0 2px rgba(0,0,0,0.5);
+    margin: 10px 0;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+    .V_element:hover {
+        border: 2px solid #94B5B9;
+    }
+
+.Sort_Title_Pagination {
+   margin:50px 0 30px 30px;
+}
+
+.field {
+    color:#D0D2D2;
+    margin-right:10px;
+}
+
+.fa-times-circle {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: #94b5b9;
+    font-size: 25px !important;
+}
+
+.fa-plus {
+    color: #4D868D;
+    border: 1px solid #4D868D;
+    border-radius: 100px;
+    padding: 4px 7px;
+    margin: 5px 0 0 5px;
+    cursor: pointer;
+}
+
+.fa-filter, .fa-th-list, .fa-users, .fa-edit {
+    margin-left: 20px;
+    color: #BBBBBB;
+}
+
+.glyphicon-search {
+    color: #AAAAAA;
+}
+
+/*---------------Projects---------------*/
+
+.projectInfo {
+    margin-top: 15px;
+    color: #B9B9B9;
+}
+
+    .projectInfo i {
+        padding-left: 3px;
+    }
+/*-----------------------------*/
+
+#imaginary_container {
+    margin-top: 20%; /* Don't copy this */
+}
+
+.stylish-input-group .input-group-addon {
+    background: white !important;
+}
+
+.stylish-input-group .form-control {
+    border-right: 0;
+    box-shadow: 0 0 0;
+    border-color: #ccc;
+}
+
+.stylish-input-group button {
+    border: 0;
+    background: transparent;
+}
+
+
+
+
+/*-------------------U-S-E-R-S-------------------*/
+.userInfo img {
+    border:2px solid #79A9AA;
+    float: left;
+    margin-right: 10px;
+}
+
+#FirstLastName {
+    margin-left: 20px;
+    font-size: 18px;
+}
