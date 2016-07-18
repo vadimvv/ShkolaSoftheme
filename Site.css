@@ -63,16 +63,6 @@ textarea {
         background-color: #F2FBFA;
     }
 
-.modalFiltersDiv {
-    height: 50px;
-    padding: 15px 15px;
-    cursor: pointer;
-}
-
-    .modalFiltersDiv:hover {
-        background-color: #F2FBFA;
-    }
-
 .loading-image {
     position: absolute;
     top: 34%;
@@ -151,20 +141,10 @@ ul::-webkit-scrollbar-thumb {
     width: 50px;
 }
 
-/*@media only screen and (max-width : 494px) {
+@media only screen and (max-width : 494px) {
     #Local-search {
-        /*width: 700px;
+        /*width: 700px;*/
     }
-}*/
-
-
-.createFilterSelectLeft {
-    width: 49%;
-    margin-right: 7px;
-}
-
-.createFilterSelectRight {
-    width: 49%;
 }
 
 .AdvancedSearch {
@@ -249,9 +229,9 @@ option:hover {
     background-color: white;
     box-shadow: 2px 2px rgb(239,244,244);
 }
-
-    #UniversalTable:last-child {
-    }
+#UniversalTable:last-child {
+    
+}
 
 
 .TableRowInfo {
@@ -270,7 +250,7 @@ option:hover {
         padding: 25px 0 10px 10px;
     }
 
-    .TableRow .TableRow:last-child > div {
+   .TableRow .TableRow:last-child > div {
         border: none;
         padding: 15px 0 20px 10px;
     }
@@ -317,72 +297,22 @@ option:hover {
     padding-left: 20px;
 }
 
-#UserFirstName {
-    margin: 0;
-    display: inline-block;
-    width: 33.2%;
-}
-
-#UserLastName {
-    margin: 0 0 0 10px;
-    display: inline-block;
-    width: 64%;
-}
-
-#UserEmail {
-    margin: 0;
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-#UserPassword {
-    margin: 0 10px 0 0;
-    display: inline-block;
-    width: 165px;
-}
-
-#ConfirmUserPassword {
-    margin: 0 10px 0 0;
-    display: inline-block;
-    width: 165px;
-}
-
-#FullName {
-    margin-bottom: 15px;
-}
-
-
 /*CreateTask adaptive*/
 @media only screen and (max-width : 605px) {
-
-    #taskProjectDropDown, #taskUserDropDown, #taskPriorityDropDown, #taskStatusDropDown {
-        display: block;
-        width: 100%;
-        margin-left: 0;
-        margin-bottom: 15px;
-    }
-}
-
-
-
-@media only screen and (max-width : 568px) {
-
-    #UserFirstName, #UserLastName, #UserEmail, #UserPassword, #ConfirmUserPassword, #UserRole {
-        margin-left: 0;
+    
+    #taskProjectDropDown, #taskUserDropDown, #tastPriorityDropDown,#taskStatusDropDown {
         display: inline-block;
         width: 100%;
-        margin-bottom: 15px;
-    }
-    #FullName {
-        margin: 0;
     }
 }
 
-/*@media only screen and (max-width : 343px) {
+@media only screen and (max-width : 343px) {
     #ProjectPrefix {
         width: 50px;
+        
     }
-}*/
+    
+}
 
 
 
@@ -454,7 +384,7 @@ option:hover {
 
 
 @media only screen and (max-width : 1010px) {
-   #search {
+    #search {
         display: none;
     }
 
@@ -467,15 +397,7 @@ option:hover {
     }
 }
 
-@media only screen and (max-width : 767px) { /*Or 768*/
-    .createFilterSelectLeft {
-        width: 100%;
-        margin-right: 0;
-    }
-
-    .createFilterSelectRight {
-        width: 100%;
-    }
+@media only screen and (max-width : 767px) {
 
     .assignedToMeTable {
         padding: 0;
@@ -504,13 +426,14 @@ option:hover {
         padding: 5px;
         background-color: #4D868D;
         color: white;
-
     }
 
     #userDrop {
         display: none;
     }
+}
 
+@media only screen and (min-width : 768px) {
     #liSearch {
         display: none;
     }
@@ -523,10 +446,6 @@ option:hover {
         display: none;
     }
 }
-
-/*@media only screen and (min-width : 768px) {
-    
-}*/
 
 @media only screen and (max-width : 992px) {
 
@@ -645,7 +564,7 @@ body {
     color: #B9B9B9;
 }
 
-@media only screen and (max-width : 836px) {
+@media only screen and (max-width : 837px) {
     #ProjectName {
         display: block;
     }
@@ -786,7 +705,6 @@ body {
 
 /*----------------L-A-Y-O-U-T--------------------*/
 
-
 @media only screen and (max-width : 768px) {
     #AsignarLogo {
         padding-left: 0;
@@ -801,7 +719,6 @@ body {
 #navUserPhotoCollapsed {
     margin-right: 5px;
 }
-
 
 /*Copy Past from the Internet*/
 
